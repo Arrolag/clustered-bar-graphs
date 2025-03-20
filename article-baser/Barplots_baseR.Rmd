@@ -131,9 +131,7 @@ The *matrix()* function has two crucial arguments, *nrow* and *byrow*. *nrow* sp
 The code provided below uses the *barplot()* function to create the graph shown in Figure 1.
 
 ```{r, comment=NA}
-library(RColorBrewer)
 barplot(mydata, beside = TRUE, xlab = "Store", ylab = "Sales ($)", legend.text = TRUE)
-
 ```
 <p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 1: Clustered bar graph created using barplot().
 </p> 
@@ -161,6 +159,7 @@ Once loaded, you can access the *brewer.pal()* function and use it to create a v
 We use the following code to add colors and create the graph shown in Figure 2.
 
 ```{r, comment=NA}
+library(RColorBrewer)
 barplot(mydata, beside = TRUE, col = brewer.pal(3, name = "Pastel1"), xlab = "Store", ylab = "Sales ($)", legend.text = TRUE)
 ```
 <p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 2: Clustered bar graph with added product colors.</p> 

@@ -165,7 +165,7 @@ You can learn more about the parameters of *px.bar()* by using the command *help
 
 In the code above, we use the *update_yaxes()* figure method to suppress the graph’s y-axis and horizontal grid lines, removing graph clutter. The result is displayed in Figure 1. 
 
-Next, we create another clustered bar graph using *plotly.graph_objects*.* However, to use this module, you must reorganize the dataset into a wide format, ensuring that each row in the new dataset represents a unique store. 
+Next, we create another clustered bar graph using *plotly.graph_objects*. However, to use this module, you must reorganize the dataset into a wide format, ensuring that each row in the new dataset represents a unique store. 
 
 As the data is small, you can recreate it from scratch using the following code:
 
@@ -232,7 +232,7 @@ plt.legend(loc="lower right", title="Product");
 <p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 3: Clustered bar graph created using pandas’ plot() method.</p> 
 
 
-Alternatively, you can use matplotlib’s bar() method to create the graph. Here’s the code:
+Alternatively, you can use matplotlib’s *bar()* method to create the graph. Here’s the code:
 
 ```{python}
 # Clustered bar graph using matplotlib's bar() method
