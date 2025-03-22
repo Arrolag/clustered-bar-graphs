@@ -4,7 +4,8 @@ author: "Ruth Ogal"
 date: "2025-03-19"
 output: 
   html_document:
-    fig_caption: yes
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -13,21 +14,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <!--CSS Rules for styling HTML elements-->
 <style>
-  table {
-    border-collapse: collapse;
-    width: 50%;
-    margin-bottom: 30px; 
-    margin-top: 30px;
-  }
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-  }
-  caption {
-    font-weight: bold; /* Make the caption text bold */
-    font-style: italic; /* Make the caption text italic */
-  }
+			body {
+			font-size: 16px;
+			}
+			table {
+			border-collapse: collapse;
+			width: 50%;
+			margin-bottom: 30px; 
+			margin-top: 30px;
+			}
+			th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+			}
+			.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+			background-color: #899499;
+			}
 </style>
 
 
@@ -67,9 +70,6 @@ import seaborn as sns
 
 <!--Custom HTML Table-->
 <table>
-  <caption style="caption-side: bottom; text-indent: 30px;">
-    Table 1. Dummy sales data.
-  </caption>
   <thead>
     <tr>
       <th>Store</th>
@@ -125,6 +125,7 @@ import seaborn as sns
     </tr>
   </tbody>
 </table>
+<p style="font-weight: bold; text-indent: 30px;">Table 1: Dummy sales data.</p> 
 
 
 Table 1 shows a dummy dataset having 3 columns and 9 rows. The dataset is said to have a long format because its first column (Store) has values repeating in multiple rows. We would like to see how the sales values for products P1, P2, and P3 change across stores A, B, and C, and a clustered bar graph is ideal for visualizing these changes. 
@@ -157,7 +158,7 @@ fig = px.bar(df, x="Store", y="Sales",
 fig.update_yaxes(visible=False)
 fig.show()
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 1. Clustered bar graph created using plotly.express.
+<p style="font-weight: bold; text-indent: 30px;">Figure 1. Clustered bar graph created using plotly.express.
 </p> 
 
 
@@ -210,7 +211,7 @@ fig_go = go.Figure(data=data, layout=layout)
 fig_go.update_yaxes(visible=False)
 fig_go.show()
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 2: Clustered bar graph created using plotly.graph_objects. </p> 
+<p style="font-weight: bold; text-indent: 30px;">Figure 2: Clustered bar graph created using plotly.graph_objects. </p> 
 
 
 The code outputs the bar graph in Figure 2.
@@ -229,7 +230,7 @@ df_wide.plot(x="Store",
         xlabel="Store", ylabel="Sales", color=colors)
 plt.legend(loc="lower right", title="Product");
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 3: Clustered bar graph created using pandas’ plot() method.</p> 
+<p style="font-weight: bold; text-indent: 30px;">Figure 3: Clustered bar graph created using pandas’ plot() method.</p> 
 
 
 Alternatively, you can use matplotlib’s *bar()* method to create the graph. Here’s the code:
@@ -262,7 +263,7 @@ plt.title("Product sales in $")
 plt.ylabel("Sales")
 plt.show()
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 4: Clustered bar graph created using matplotlib’s bar() method.</p> 
+<p style="font-weight: bold; text-indent: 30px;">Figure 4: Clustered bar graph created using matplotlib’s bar() method.</p> 
 
 
 As you can see, this method builds every bar from the ground up. To use it effectively, you must specify the positions of the bar groups and ticks along the x-axis and the width of the bars. In this case, the first, second, and third groups start at 0, 1, and 2, respectively. Each group contains three bars (for P1, P2, and P3), so the total width of these three bars must be less than 1 unit, with each bar having a maximum width of 0.33 units. If the width of a bar exceeds 0.33 units, the bar groups will touch each other or overlap. We set the bar width at 0.25 units, resulting in the graph shown in Figure 4. 
@@ -283,7 +284,7 @@ sns.barplot(x="Store", y="Sales", hue="Product", data=df, palette=custom_palette
 plt.legend(loc="lower right")
 plt.show()
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 5: Clustered bar graph created using Seaborn’s barplot() method.</p> 
+<p style="font-weight: bold; text-indent: 30px;">Figure 5: Clustered bar graph created using Seaborn’s barplot() method.</p> 
 
 
 Many methods used in the code above, like *plt.show()* and *plt.subplots()*, are familiar, as we’ve already used them when plotting with *Matplotlib*.

@@ -2,7 +2,10 @@
 title: "How to create clustered bar graphs with R base graphics"
 author: "Ruth Ogal"
 date: "2025-03-19"
-output: html_document
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -11,24 +14,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <!--CSS Rules for styling HTML elements-->
 <style>
-  table {
-    border-collapse: collapse;
-    width: 50%;
-    margin-bottom: 30px; 
-    margin-top: 30px;
-  }
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
-  }
-  caption {
-    font-weight: bold; /* Make the caption text bold */
-    font-style: italic; /* Make the caption text italic */
-  }
+			body {
+			font-size: 16px;
+			}
+			table {
+			border-collapse: collapse;
+			width: 50%;
+			margin-bottom: 30px; 
+			margin-top: 30px;
+			}
+			th, td {
+			border: 1px solid black;
+			padding: 8px;
+			text-align: left;
+			}
+			.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
+			background-color: #899499;
+			}
 </style>
-
-
 
 A clustered bar graph is useful for comparing values across two categories of data. In this type of graph, we organize the bars in groups based on the levels of the first categorical variable. The height of each bar within a group represents the value of a level of the second categorical variable. 
 
@@ -44,9 +47,6 @@ Table 1 shows a dummy dataset containing monthly sales for three products sold b
 
 <!--Custom HTML Table-->
 <table>
-  <caption style="caption-side: bottom; text-indent: 30px;">
-    Table 1. Dummy sales data.
-  </caption>
   <thead>
     <tr>
       <th>Store</th>
@@ -102,7 +102,7 @@ Table 1 shows a dummy dataset containing monthly sales for three products sold b
     </tr>
   </tbody>
 </table>
-
+<p style="font-weight: bold; text-indent: 30px;">Table 1: Dummy sales data.</p> 
 
 In this dataset, Store and Product are categorical variables, while Sales is a numerical variable. You can use a clustered bar graph to compare the monthly sales of the three products across the three stores. The bars in this graph will be organized into three groups based on store levels, with each bar representing the sales figure for a specific product. 
 
@@ -133,7 +133,7 @@ The code provided below uses the *barplot()* function to create the graph shown 
 ```{r, comment=NA}
 barplot(mydata, beside = TRUE, xlab = "Store", ylab = "Sales ($)", legend.text = TRUE)
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 1: Clustered bar graph created using barplot().
+<p style="font-weight: bold; text-indent: 30px;">Figure 1: Clustered bar graph created using barplot().
 </p> 
 
 
@@ -162,7 +162,7 @@ We use the following code to add colors and create the graph shown in Figure 2.
 library(RColorBrewer)
 barplot(mydata, beside = TRUE, col = brewer.pal(3, name = "Pastel1"), xlab = "Store", ylab = "Sales ($)", legend.text = TRUE)
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 2: Clustered bar graph with added product colors.</p> 
+<p style="font-weight: bold; text-indent: 30px;">Figure 2: Clustered bar graph with added product colors.</p> 
 
 
 #### 2. Customize the legend
@@ -190,7 +190,7 @@ The adjustments result in the graph shown in Figure 3.
 ```{r, comment=NA}
 barplot(mydata, beside = TRUE, col = brewer.pal(3, name = "Pastel1"), xlab = "Store", ylab = "Sales ($)", legend.text = TRUE, args.legend = list(title = "Product", x = "right", bty = "n", inset = -0.16))
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 3: Clustered bar graph with customized legend.
+<p style="font-weight: bold; text-indent: 30px;">Figure 3: Clustered bar graph with customized legend.
 </p> 
 
 
@@ -206,7 +206,7 @@ Additionally, we can use the *space* argument to reduce the space between the gr
 par(mai=c(1, 1, 1, 1.2))
 barplot(mydata, beside = TRUE, col = brewer.pal(3, name = "Pastel1"), space = c(0, 0.6), xlab = "Store", ylab = "Sales ($)", legend.text = TRUE, args.legend = list(title = "Product", x = "right", bty = "n", inset = -0.16))
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 4: Clustered bar graph with adjusted margins.
+<p style="font-weight: bold; text-indent: 30px;">Figure 4: Clustered bar graph with adjusted margins.
 </p> 
 
 
@@ -219,7 +219,7 @@ Here is the code used to create the graph shown in Figure 5.
 par(mai=c(1, 1, 1, 1.2))
 barplot(mydata, beside = TRUE, col = brewer.pal(3, name = "Pastel1"), space = c(0, 0.6), xlab = "Store", ylab = "Sales ($)", ylim = c(0, 60000), legend.text = TRUE, args.legend = list(title = "Product", x = "right", bty = "n", inset = -0.16))
 ```
-<p style="font-weight: bold; font-style: italic; text-indent: 30px;">Figure 5: Clustered bar graph with various modifications.
+<p style="font-weight: bold; text-indent: 30px;">Figure 5: Clustered bar graph with various modifications.
 </p> 
 
 
